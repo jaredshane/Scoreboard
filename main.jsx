@@ -216,9 +216,25 @@ let Application = React.createClass({
   },
 
   onScoreChange: function (index, delta) {
-    console.log('on score change', index, delta)
     this.state.players[index].score += delta;
     this.setState(this.state)
+
+  },
+
+  onPlayerAdd: function (name) {
+    this.state.players.push({
+      name: name,
+      score: 0,
+      id: nextId,
+    })
+    this.setState(this.state);
+    nextId += 1;
+
+  },
+
+  onRemovePlayer: function(index) {
+    this.state.players.splice(index, 1);
+    this.setState(this.state);
   },
 
   render: function () {
