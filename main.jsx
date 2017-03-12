@@ -189,6 +189,7 @@ Player.propTypes = {
   name: React.PropTypes.string.isRequired,
   score: React.PropTypes.number.isRequired,
   onScoreChange: React.PropTypes.func.isRequired,
+  onRemove: React.PropTypes.func.isRequired,
 }
 
 let Application = React.createClass({
