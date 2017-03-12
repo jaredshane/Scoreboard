@@ -248,6 +248,7 @@ let Application = React.createClass({
                 onScoreChange={function(delta) {
                   this.onScoreChange(index, delta)
                 }.bind(this)}
+                onRemove={function(){this.onRemovePlayer(index)}.bind(this)}
                 name={player.name}
                 score={player.score}
                 key={player.id}
