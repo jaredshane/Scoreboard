@@ -146,6 +146,7 @@ let Header = (props) => {
     <div className="header">
       <Stats players={props.players}/>
       <h1>{props.title}</h1>
+      <Stopwatch />
     </div>
   );
 }
