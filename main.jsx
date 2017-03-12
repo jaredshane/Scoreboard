@@ -14,7 +14,106 @@ let PLAYERS = [
     score: 40,
     id: 3
   }
-]
+];
+
+let nextId = 4;
+
+let Stopwatch = React.createClass({
+  getInitialState: function () {
+    return {
+      running: false,
+      elapsedTime: 0,
+      previousTime: 0,
+    }
+  },
+
+  componentDidMount: function () {
+    this.interval = setInterval(this.onTick, 100);
+  },
+
+  componentWillUnmount: function () {
+    clearInterval(this.interval);
+  },
+
+  onTick: function () {
+    if (this.state.running) {
+      var now = Date.now();
+      this.setState({
+        previousTime: now,
+        elapsedTime: this.state.elapsedTime + (now - this.state.previousTime),
+      })
+    }
+  },
+
+  onStart: function () {
+    this.setState({
+      running: true,
+      previousTime: Date.now(),
+    })
+  },
+
+  onStop: function () {
+    this.setState({running: false})
+  },
+
+  onReset: function() {
+    this.setState({
+      elapsedTime: 0,
+      previousTime: Date.now(),
+    })
+  },
+
+  render: function() {
+    var seconds = Math.floor(this.state.elapsedTime / 1000);
+    return (
+      <div className="stopwatch">
+        <h2>Stopwatch</h2>
+        <div className="stopwatch-time">
+          {seconds}
+        </div>
+        { this.state.running ?
+          <button onClick={this.onStop}>Stop</button>
+            :
+          <button onClick={this.onStart}>Start</button>
+        }
+        <button onClick={this.onReset}>Reset</button>
+      </div>
+    )
+  }
+})
+
+let AddPlayerForm  = React.createClass({
+  propTypes: {
+    onAdd: React.PropTypes.func.isRequired,
+  },
+
+  onNameChange: function(e) {
+    console.log(e.target.value)
+    this.setState({name: e.target.value});
+  },
+
+  getInitialState: function () {
+    return {
+      name: ""
+    }
+  },
+  onSubmit: function (e) {
+    e.preventDefault();
+    this.props.onAdd(this.state.name);
+    this.setState({name: ""})
+  },
+
+  render: function () {
+    return(
+      <div className="add-player-form">
+        <form onSubmit={this.onSubmit}>
+          <input type="text" value={this.state.name} onChange={this.onNameChange}/>
+          <input type="submit" value="Add Player" />
+        </form>
+      </div>
+    )
+  }
+});
 
 let Stats = (props) => {
   let totalPlayers = props.players.length
