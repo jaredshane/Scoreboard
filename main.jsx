@@ -256,6 +256,7 @@ let Application = React.createClass({
             )
           }.bind(this))}
         </div>
+        <AddPlayerForm onAdd={this.onPlayerAdd}/>
       </div>
     );
   }
