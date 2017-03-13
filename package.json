@@ -1,0 +1,37 @@
+{
+  "name": "Scoreboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack-dev-server --progress --port 8000 --inline --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaredshane/Scoreboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaredshane/Scoreboard/issues"
+  },
+  "homepage": "https://github.com/jaredshane/Scoreboard#readme",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "css-loader": "^0.27.3",
+    "react-hot-loader": "^1.3.1",
+    "style-loader": "^0.13.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  }
+}
